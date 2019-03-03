@@ -6,7 +6,7 @@ export default class HelloWorld extends React.Component {
         super();
         this.state = {
             position: POSITION.P2,
-            action: ACTION.SERVING,
+            action: ACTION.RECEIVING,
         };
         this.onPositionChange = this.onPositionChange.bind(this);
         this.onActionChange = this.onActionChange.bind(this);
