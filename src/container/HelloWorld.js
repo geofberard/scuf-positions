@@ -1,23 +1,25 @@
 import React from "react";
-import Position, {ACTION, POSITION} from "./Position";
+import Position from "./Position";
+import {EAction} from "../data/EAction";
+import {EPosition} from "../data/EPosition";
 
 export default class HelloWorld extends React.Component {
     constructor() {
         super();
         this.state = {
-            position: POSITION.P2,
-            action: ACTION.RECEIVING,
+            position: EPosition.P1,
+            action: EAction.ORIGINAL,
         };
         this.onPositionChange = this.onPositionChange.bind(this);
         this.onActionChange = this.onActionChange.bind(this);
     }
 
     onPositionChange(event) {
-        this.setState({position: event.target.value});
+        this.setState({position: EPosition[event.target.value]});
     }
 
     onActionChange(event) {
-        this.setState({action: event.target.value});
+        this.setState({action: EAction[event.target.value]});
     }
 
     render() {
@@ -26,12 +28,11 @@ export default class HelloWorld extends React.Component {
             <div className="helo-world">
                 Hello World !
                 <select onChange={this.onPositionChange}>
-                    {Object.values(POSITION).map(position => <option value={position}>{position}</option>)}
+                    {Object.values(EPosition).map(position => <option value={position.id}>{position.label}</option>)}
                 </select>
                 <select onChange={this.onActionChange}>
-                    {Object.values(ACTION).map(action => <option value={action}>{action}</option>)}
+                    {Object.values(EAction).map(action => <option value={action.id}>{action.label}</option>)}
                 </select>
-                Actually : {this.state.position} {this.state.action}
                 <Position position={this.state.position} action={this.state.action}/>
             </div>
         );
