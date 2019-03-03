@@ -1,4 +1,6 @@
-module.exports = {
+var webpack = require('webpack');
+
+module.exports = (env, argv) => ({
     entry: __dirname + "/app/main.js",
     output: {
         path: __dirname ,
@@ -9,19 +11,29 @@ module.exports = {
         port: 8080
     },
     module: {
-        loaders: [
+        rules: [
             {
-                test: /\.js$/,
+                test: /\.jsx?$/,
                 exclude: /node_modules/,
-                loader: 'babel-loader',
-                query: {
-                    presets: ['es2015', 'react']
+                use: {
+                    loader: 'babel-loader'
                 }
             },
             {
-                test: /\.less$/,
-                loader: "style-loader!css-loader!autoprefixer-loader!less-loader"
-            },
+                test: /\.scss$/,
+                use: [
+                    "style-loader",
+                    "css-loader",
+                    {
+                        loader: "postcss-loader",
+                        options: {
+                            config: {path: __dirname, ctx: {env: argv.mode}},
+                            sourceMap: argv.mode !== "production",
+                        },
+                    },
+                    "sass-loader"
+                ]
+            }
         ]
     }
-}
+});

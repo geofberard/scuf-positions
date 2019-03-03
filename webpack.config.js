@@ -1,6 +1,6 @@
 var webpack = require('webpack');
 
-module.exports = {
+module.exports = (env, argv) => ({
     entry: "./src/index.js",
     output: {
         path: __dirname + '/dist',
@@ -8,43 +8,30 @@ module.exports = {
         library: 'ReactContainerBoilerplate',
         libraryTarget: 'umd',
     },
-    externals: [
-        {
-            react: {
-                root: 'React',
-                commonjs2: 'react',
-                commonjs: 'react',
-                amd: 'react',
-            },
-        },
-        {
-            'react-dom': {
-                root: 'ReactDOM',
-                commonjs2: 'react-dom',
-                commonjs: 'react-dom',
-                amd: 'react-dom',
-            },
-        },
-    ],
     module: {
-        loaders: [
+        rules: [
             {
-                test: /\.js$/,
+                test: /\.jsx?$/,
                 exclude: /node_modules/,
-                loader: 'babel',
-                query: {
-                    presets: ['es2015', 'react']
+                use: {
+                    loader: 'babel-loader'
                 }
             },
             {
-                test: /\.less$/,
-                loader: "style!css!autoprefixer!less"
-            },
+                test: /\.scss$/,
+                use: [
+                    "style-loader",
+                    "css-loader",
+                    {
+                        loader: "postcss-loader",
+                        options: {
+                            config: {path: __dirname, ctx: {env: argv.mode}},
+                            sourceMap: argv.mode !== "production",
+                        },
+                    },
+                    "sass-loader"
+                ]
+            }
         ]
-    },
-    plugins: [
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-        })
-    ]
-}
+    }
+});
