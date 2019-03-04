@@ -6,7 +6,7 @@ import {EPlayer} from "../data/EPlayer";
 export const MAX_SIZE = 1100;
 
 const Position = ({positions, focus}) => (
-    <svg viewBox={`0 0 ${MAX_SIZE} ${MAX_SIZE}`}>
+    <svg viewBox={`0 0 ${MAX_SIZE} ${MAX_SIZE - 50}`}>
         <Court>
             {Object.values(EPlayer)
                 .map(player => <Player

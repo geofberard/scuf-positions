@@ -1,0 +1,25 @@
+.Position{
+    border-top: 1px solid gray;
+    padding-top: 15px;
+
+    &-label {
+        font-size: 20px;
+        font-weight: bold;
+        padding: 0 50px;
+    }
+
+    &-diagram {
+        padding: 0 5px;
+    }
+}
+
+.Legend{
+    padding: 10px 0;
+    vertical-align: middle;
+    text-align: center;
+
+    &-picto {
+        height: 15px;
+        padding-left: 5px;
+    }
+}

@@ -1,10 +1,13 @@
 var webpack = require('webpack');
 
 module.exports = (env, argv) => ({
-    entry: __dirname + "/app/main.js",
+    entry: {
+        positions: __dirname + "/app/positions.js",
+        pdf: __dirname + "/app/pdf.js",
+    },
     output: {
         path: __dirname ,
-        filename: "index.js"
+        filename: "[name].gen.min.js",
     },
     devServer: {
         inline: true,
@@ -33,7 +36,19 @@ module.exports = (env, argv) => ({
                     },
                     "sass-loader"
                 ]
-            }
+            },
+            {
+                test: /\.css/,
+                use: ["style-loader",
+                    "css-loader",
+                    {
+                        loader: "postcss-loader",
+                        options: {
+                            config: {path: __dirname, ctx: {env: argv.mode}},
+                            sourceMap: argv.mode !== "production",
+                        },
+                    }]
+            },
         ]
     }
 });

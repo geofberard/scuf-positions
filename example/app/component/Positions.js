@@ -17,7 +17,7 @@ const ALL_PLAYERS = {
 const modulo = (value, n) => ((value % n) + n) % n;
 const getNextElement = (current, diff, list) => list[modulo(list.indexOf(current) + diff, list.length)];
 
-export default class App extends React.Component {
+export default class Positions extends React.Component {
     constructor() {
         super();
         this.state = {

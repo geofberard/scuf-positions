@@ -10,4 +10,8 @@ const Player = ({player, position, focus}) => (
             fill={focus ? player.highlight : player.understate}/>
 );
 
+Player.defaultProps = {
+    position: {px: 40 * 100 / COURT_SIZE, py: 40 * 100 / COURT_SIZE},
+};
+
 export default Player;
