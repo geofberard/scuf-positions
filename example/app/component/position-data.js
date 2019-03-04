@@ -1,6 +1,6 @@
-import {EPlayer} from "../../src/data/EPlayer";
-import {EAction} from "../../src/data/EAction";
-import {EPosition} from "../../src/data/EPosition";
+import {EPlayer} from "../../../src";
+import {EAction} from "../data/EAction";
+import {EPosition} from "../data/EPosition";
 
 const ORIGINAL_P1 = {px: 80, py: 70};
 const ORIGINAL_P2 = {px: 80, py: 20};

@@ -1,6 +1,8 @@
 import React from "react";
-import {Position, EPosition, EAction, EPlayer} from "../../src/index";
+import {Position, EPlayer} from "../../../src";
 import {PLAYER_SCUF} from "./position-scuf";
+import {EAction} from "../data/EAction";
+import {EPosition} from "../data/EPosition";
 
 export default class App extends React.Component {
     constructor() {
