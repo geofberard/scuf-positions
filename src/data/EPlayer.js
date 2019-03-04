@@ -11,27 +11,27 @@ export const EPlayer = {
         highlight: "#6a1b9a",
         understate: "#ce93d8",
     },
-    OUTSIDE_FRONT: {
-        id: "OUTSIDE_FRONT",
-        label: "Réceptionneuses-Attaquantes Avant",
+    OUTSIDE_A: {
+        id: "OUTSIDE_A",
+        label: "Latérale A",
         highlight: "#c62828",
         understate: "#ef9a9a",
     },
-    OUTSIDE_BACK: {
-        id: "OUTSIDE_BACK",
-        label: "Réceptionneuses-Attaquantes Arrière",
+    OUTSIDE_B: {
+        id: "OUTSIDE_B",
+        label: "Latérale B",
         highlight: "#c62828",
         understate: "#ef9a9a",
     },
-    MIDDLE_FRONT: {
-        id: "MIDDLE_FRONT",
-        label: "Centrale Avant",
+    MIDDLE_A: {
+        id: "MIDDLE_A",
+        label: "Centrale A",
         highlight: "#2e7d32",
         understate: "#a5d6a7",
     },
-    MIDDLE_BACK: {
-        id: "MIDDLE_BACK",
-        label: "Centrale Arrière",
+    MIDDLE_B: {
+        id: "MIDDLE_B",
+        label: "Centrale B",
         highlight: "#2e7d32",
         understate: "#a5d6a7",
     }
