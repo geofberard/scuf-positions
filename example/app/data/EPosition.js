@@ -6,3 +6,5 @@ export const EPosition = {
     P3: {id:"P3",label:"Passeuse en P3"},
     P2: {id:"P2",label:"Passeuse en P2"},
 };
+
+export const EPositions = Object.values(EPosition);

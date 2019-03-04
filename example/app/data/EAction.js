@@ -3,3 +3,5 @@ export const EAction = {
     SERVING: {id: "SERVING", label: "Service"},
     RECEIVING: {id: "RECEIVING", label: "Réception"},
 };
+
+export const EActions = Object.values(EAction);
