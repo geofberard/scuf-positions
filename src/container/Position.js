@@ -7,13 +7,14 @@ import {EPlayer} from "../data/EPlayer";
 
 export const MAX_SIZE = 1100;
 
-const Position = ({positions}) => (
+const Position = ({positions, focus}) => (
     <svg viewBox={`0 0 ${MAX_SIZE} ${MAX_SIZE}`}>
         <Court>
             {Object.values(EPlayer)
                 .map(player => <Player
                     player={player}
-                    position={positions[player.id]}/>)}
+                    position={positions[player.id]}
+                    focus={focus === undefined || focus === player}/>)}
         </Court>
         {Array.apply(null, {length: 12})
             .map(Number.call, Number)

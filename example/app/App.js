@@ -11,6 +11,7 @@ export default class App extends React.Component {
         };
         this.onPositionChange = this.onPositionChange.bind(this);
         this.onActionChange = this.onActionChange.bind(this);
+        this.onPlayerChange = this.onPlayerChange.bind(this);
     }
 
     onPositionChange(event) {
@@ -19,6 +20,10 @@ export default class App extends React.Component {
 
     onActionChange(event) {
         this.setState({action: EAction[event.target.value]});
+    }
+
+    onPlayerChange(event) {
+        this.setState({focus: EPlayer[event.target.value]});
     }
 
     render() {
@@ -30,7 +35,12 @@ export default class App extends React.Component {
                 <select onChange={this.onActionChange}>
                     {Object.values(EAction).map(action => <option value={action.id}>{action.label}</option>)}
                 </select>
-                <Position positions={PLAYER_SCUF[this.state.position.id][this.state.action.id]}/>
+                <select onChange={this.onPlayerChange}>
+                    <option value={""}>---</option>
+                    {Object.values(EPlayer).map(player => <option value={player.id}>{player.label}</option>)}
+                </select>
+                <Position positions={PLAYER_SCUF[this.state.position.id][this.state.action.id]}
+                          focus={this.state.focus}/>
             </div>
         );
     }
