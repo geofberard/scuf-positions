@@ -22,10 +22,8 @@ export default class App extends React.Component {
     }
 
     render() {
-        console.log(PLAYER_SCUF[this.state.position.id][this.state.action.id]);
         return (
             <div className="helo-world">
-                Hello World !
                 <select onChange={this.onPositionChange}>
                     {Object.values(EPosition).map(position => <option value={position.id}>{position.label}</option>)}
                 </select>
