@@ -1,4 +1,5 @@
 import React from "react";
+import {MAX_SIZE} from "./Position";
 
 export const COURT_SIZE = 900;
 const lineWidth = 5;
@@ -16,6 +17,17 @@ const Court = ({children}) => (
               x2={offset + COURT_SIZE}
               y2={COURT_SIZE / 3}
               style={{"stroke-width": lineWidth, stroke: "black"}}/>
+        <line x1={offset/2}
+              y1={lineWidth/2}
+              x2={MAX_SIZE - offset/2}
+              y2={lineWidth/2}
+              style={{"stroke-width": lineWidth, stroke: "black"}}/>
+        <circle cx={offset/2}
+                cy={lineWidth/2}
+                r="20"/>
+        <circle cx={MAX_SIZE - offset/2}
+                cy={lineWidth/2}
+                r="20"/>
         <g transform={`translate(${offset},0)`}>
             {children}
         </g>
