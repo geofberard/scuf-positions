@@ -1,18 +1,9 @@
 import React from "react";
 import Paper from '@material-ui/core/Paper';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import CardActionArea from '@material-ui/core/CardActionArea';
 import Select from '@material-ui/core/Select';
-import InputLabel from '@material-ui/core/InputLabel';
-import FormControl from '@material-ui/core/FormControl';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
-import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 
 
 import {EPlayer, Position} from "../../../src";
@@ -22,7 +13,7 @@ import {EPosition, EPositions} from "../data/EPosition";
 
 import "../../styles/positions.scss"
 import StepSelector from "./StepSelector";
-import Grid from "@material-ui/core/Grid/Grid";
+import Player from "../../../src/container/Player";
 
 const ALL_PLAYERS = {
     id: "ALL_PLAYERS",
@@ -35,7 +26,7 @@ const EPlayerFilter = {
 };
 
 const EPlayerFilters = Object.values(EPlayerFilter);
-
+const legend = [EPlayer.SETTER,EPlayer.OPPOSITE,EPlayer.OUTSIDE_A,EPlayer.MIDDLE_A];
 
 const modulo = (value, n) => ((value % n) + n) % n;
 const getNextElement = (current, diff, list) => list[modulo(list.indexOf(current) + diff, list.length)];
@@ -97,8 +88,8 @@ export default class Positions extends React.Component {
                     </Toolbar>
                 </AppBar>
                 <div className="AppContainer">
-                    <Paper className="PositionPaper">
-                        <div className="PositionPaper-header">
+                    <Paper className="Card">
+                        <div className="Card-header">
                             <StepSelector title="Position"
                                           value={this.state.position}
                                           values={EPositions}
@@ -110,6 +101,20 @@ export default class Positions extends React.Component {
                         </div>
                         <Position positions={PLAYER_SCUF[this.state.position.id][this.state.action.id]}
                                   focus={this.state.focus === ALL_PLAYERS ? undefined : this.state.focus}/>
+                    </Paper>
+                    <Paper className="Card LegendCard">
+                        <div className="Card-header">
+                            {legend.map(player => (
+                                <div className={"col-sm-3"}>
+                                    <div className={"Legend"}>
+                                        {player.label.replace(" A","")}
+                                        <svg viewBox={`0 0 80 80`} className={"Legend-picto"}>
+                                            <Player player={player} focus={true}/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
                     </Paper>
                 </div>
             </React.Fragment>
