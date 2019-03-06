@@ -2,7 +2,6 @@ body {
     background: #fafafa;
 }
 
-
 .MenuBar {
     .Title {
         flex-grow: 1;
@@ -10,6 +9,10 @@ body {
 
     .PlayerSelect-input, .PlayerSelect-label, svg {
         color: white;
+    }
+
+    .PlayerSelect-label {
+        margin-right: 5px;
     }
 
     .PlayerSelect-input {
@@ -28,11 +31,16 @@ body {
 
 }
 
+.PositionPaper-header{
+    display: flex;
+    justify-content: space-between;
+}
+
 .AppContainer {
     padding-top: 70px;
 }
 
 .PositionPaper {
-    max-width: 800px;
+    max-width: 70vh;
     margin: auto;
 }

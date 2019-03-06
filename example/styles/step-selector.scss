@@ -1,0 +1,23 @@
+.StepSelector{
+    display: flex;
+    justify-content: center;
+    padding: 15px 0;
+}
+
+@media (max-width: 480px) {
+    .StepSelector{
+        justify-content: space-between;
+        flex-flow: row wrap;
+
+        &-arrow-left{
+            order: 1;
+        }
+        &-arrow-right{
+            order: 2;
+        }
+        &-select{
+            width: 80%;
+            margin: 0 10% !important;
+        }
+    }
+}
