@@ -1,0 +1,38 @@
+body {
+    background: #fafafa;
+}
+
+
+.MenuBar {
+    .Title {
+        flex-grow: 1;
+    }
+
+    .PlayerSelect-input, .PlayerSelect-label, svg {
+        color: white;
+    }
+
+    .PlayerSelect-input {
+        &:before, &:focus {
+            border-bottom: 1px solid white;
+        }
+
+        &:after {
+            border-bottom: 1px solid #fafafa;
+        }
+
+        &:hover:before {
+            border-bottom: 2px solid white !important;
+        }
+    }
+
+}
+
+.AppContainer {
+    padding-top: 70px;
+}
+
+.PositionPaper {
+    max-width: 800px;
+    margin: auto;
+}
