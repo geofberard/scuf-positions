@@ -3,13 +3,18 @@ import Paper from '@material-ui/core/Paper';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
+import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
+import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
+
+
 import {EPlayer, Position} from "../../../src";
 import {PLAYER_SCUF} from "./position-scuf";
 import {EAction, EActions} from "../data/EAction";
 import {EPosition, EPositions} from "../data/EPosition";
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 
 import "../../styles/positions.scss"
 
@@ -86,6 +91,9 @@ export default class Positions extends React.Component {
                 </AppBar>
                 <div className="AppContainer">
                     <Paper className="PositionPaper" elevation={4}>
+                        <IconButton aria-label="Précédant">
+                            <KeyboardArrowLeft onClick={() => this.onPositionNavigation(-1)}/>
+                        </IconButton>
                         <FormControl>
                             <InputLabel htmlFor="position-select">Position</InputLabel>
                             <Select native
@@ -95,9 +103,13 @@ export default class Positions extends React.Component {
                                 {EPositions.map(position => <option value={position.id}>{position.label}</option>)}
                             </Select>
                         </FormControl>
-                        <div onClick={() => this.onPositionNavigation(-1)}>Previous</div>
-                        <div onClick={() => this.onPositionNavigation(1)}>Next</div>
+                        <IconButton aria-label="Suivant">
+                            <KeyboardArrowRight onClick={() => this.onPositionNavigation(1)}/>
+                        </IconButton>
                         <br/>
+                        <IconButton aria-label="Précédant">
+                            <KeyboardArrowLeft onClick={() => this.onActionNavigation(-1)}/>
+                        </IconButton>
                         <FormControl>
                             <InputLabel htmlFor="action-select">Action</InputLabel>
                             <Select native
@@ -107,8 +119,9 @@ export default class Positions extends React.Component {
                                 {EActions.map(action => <option value={action.id}>{action.label}</option>)}
                             </Select>
                         </FormControl>
-                        <div onClick={() => this.onActionNavigation(-1)}>Previous</div>
-                        <div onClick={() => this.onActionNavigation(1)}>Next</div>
+                        <IconButton aria-label="Suivant">
+                            <KeyboardArrowRight onClick={() => this.onActionNavigation(1)}/>
+                        </IconButton>
                         <br/>
                         <Position positions={PLAYER_SCUF[this.state.position.id][this.state.action.id]}
                                   focus={this.state.focus === ALL_PLAYERS ? undefined : this.state.focus}/>
