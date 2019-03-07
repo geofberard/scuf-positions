@@ -34,5 +34,11 @@ export const EPlayer = {
         label: "Centrale B",
         highlight: "#2e7d32",
         understate: "#a5d6a7",
+    },
+    LIBERO: {
+        id: "LIBERO",
+        label: "Libero",
+        highlight: "#ef6c00",
+        understate: "#ffcc80",
     }
 };

@@ -2,8 +2,8 @@ var webpack = require('webpack');
 
 module.exports = (env, argv) => ({
     entry: {
-        positions: __dirname + "/app/positions.js",
-        pdf: __dirname + "/app/pdf.js",
+        positions: __dirname + "/app/entry-point/positions.js",
+        pdf: __dirname + "/app/entry-point/pdf.js",
     },
     output: {
         path: __dirname ,

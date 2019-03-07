@@ -6,14 +6,13 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
 
-import {EPlayer, Position} from "../../../src";
-import {PLAYER_SCUF} from "./position-scuf";
-import {EAction, EActions} from "../data/EAction";
-import {EPosition, EPositions} from "../data/EPosition";
+import {EPlayer} from "../../../src";
+import {START_POSITIONS_DEFAULT} from "../data/start-position-default";
+import Player from "../../../src/container/Player";
+import {PositionsDepart} from "./PositionsDepart";
 
 import "../../styles/positions.scss"
-import StepSelector from "./StepSelector";
-import Player from "../../../src/container/Player";
+import {START_POSITIONS_LIBERO} from "../data/start-position-libero";
 
 const ALL_PLAYERS = {
     id: "ALL_PLAYERS",
@@ -28,39 +27,13 @@ const EPlayerFilter = {
 const EPlayerFilters = Object.values(EPlayerFilter);
 const legend = [EPlayer.SETTER,EPlayer.OPPOSITE,EPlayer.OUTSIDE_A,EPlayer.MIDDLE_A];
 
-const modulo = (value, n) => ((value % n) + n) % n;
-const getNextElement = (current, diff, list) => list[modulo(list.indexOf(current) + diff, list.length)];
-
 export default class Positions extends React.Component {
     constructor() {
         super();
         this.state = {
-            position: EPosition.P1,
-            action: EAction.ORIGINAL,
             focus: ALL_PLAYERS
         };
-        this.onPositionChange = this.onPositionChange.bind(this);
-        this.onPositionNavigation = this.onPositionNavigation.bind(this);
-        this.onActionChange = this.onActionChange.bind(this);
-        this.onActionNavigation = this.onActionNavigation.bind(this);
         this.onPlayerChange = this.onPlayerChange.bind(this);
-    }
-
-    onPositionChange(position) {
-        console.log(position);
-        this.setState({position: position});
-    }
-
-    onPositionNavigation(diff) {
-        this.setState({position: getNextElement(this.state.position, diff, EPositions)});
-    }
-
-    onActionChange(action) {
-        this.setState({action: action});
-    }
-
-    onActionNavigation(diff) {
-        this.setState({action: getNextElement(this.state.action, diff, EActions)});
     }
 
     onPlayerChange(event) {
@@ -89,18 +62,14 @@ export default class Positions extends React.Component {
                 </AppBar>
                 <div className="AppContainer">
                     <Paper className="Card">
-                        <div className="Card-header">
-                            <StepSelector title="Position"
-                                          value={this.state.position}
-                                          values={EPositions}
-                                          onValueChange={this.onPositionChange}/>
-                            <StepSelector title="Action"
-                                          value={this.state.action}
-                                          values={EActions}
-                                          onValueChange={this.onActionChange}/>
-                        </div>
-                        <Position positions={PLAYER_SCUF[this.state.position.id][this.state.action.id]}
-                                  focus={this.state.focus === ALL_PLAYERS ? undefined : this.state.focus}/>
+                        <PositionsDepart
+                            strategy={START_POSITIONS_LIBERO}
+                            focusedPlayer={this.state.focus === ALL_PLAYERS ? undefined : this.state.focus}/>
+                    </Paper>
+                    <Paper className="Card">
+                        <PositionsDepart
+                            strategy={START_POSITIONS_DEFAULT}
+                            focusedPlayer={this.state.focus === ALL_PLAYERS ? undefined : this.state.focus}/>
                     </Paper>
                     <Paper className="Card LegendCard">
                         <div className="Card-header">

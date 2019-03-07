@@ -5,13 +5,15 @@ import {EPlayer} from "../data/EPlayer";
 
 export const MAX_SIZE = 1100;
 
+const OUTSIDE = {px: 120, py: 70};
+
 const Position = ({positions, focus}) => (
     <svg viewBox={`0 0 ${MAX_SIZE} ${MAX_SIZE - 50}`}>
         <Court>
             {Object.values(EPlayer)
                 .map(player => <Player
                     player={player}
-                    position={positions[player.id]}
+                    position={positions[player.id] || OUTSIDE}
                     focus={focus === undefined || focus === player}/>)}
         </Court>
     </svg>

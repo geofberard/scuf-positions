@@ -1,8 +1,8 @@
 import React from "react";
 import {EPlayer, Position} from "../../../src";
-import {PLAYER_SCUF} from "./position-scuf";
-import {EActions} from "../data/EAction";
-import {EPositions} from "../data/EPosition";
+import {PLAYER_SCUF} from "../data/start-position-default";
+import {EActions} from "../model/EAction";
+import {EPositions} from "../model/EPosition";
 import Player from "../../../src/container/Player";
 
 import "../../styles/pdf.scss"
