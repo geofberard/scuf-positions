@@ -1,7 +1,7 @@
 export const EPlayer = {
     SETTER: {
         id: "SETTER",
-        label: "Passeuse",
+        label: "Passe",
         highlight: "#283593",
         understate: "#9fa8da",
     },
@@ -13,25 +13,25 @@ export const EPlayer = {
     },
     OUTSIDE_A: {
         id: "OUTSIDE_A",
-        label: "Latérale A",
+        label: "Latéral A",
         highlight: "#c62828",
         understate: "#ef9a9a",
     },
     OUTSIDE_B: {
         id: "OUTSIDE_B",
-        label: "Latérale B",
+        label: "Latéral B",
         highlight: "#c62828",
         understate: "#ef9a9a",
     },
     MIDDLE_A: {
         id: "MIDDLE_A",
-        label: "Centrale A",
+        label: "Central A",
         highlight: "#2e7d32",
         understate: "#a5d6a7",
     },
     MIDDLE_B: {
         id: "MIDDLE_B",
-        label: "Centrale B",
+        label: "Central B",
         highlight: "#2e7d32",
         understate: "#a5d6a7",
     },

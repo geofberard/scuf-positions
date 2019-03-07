@@ -1,63 +1,9 @@
-body {
-    background: #fafafa;
-}
-
-.MenuBar {
-    .Title {
-        flex-grow: 1;
-    }
-
-    .PlayerSelect-input, .PlayerSelect-label, svg {
-        color: white;
-    }
-
-    .PlayerSelect-label {
-        margin-right: 5px;
-    }
-
-    .PlayerSelect-input {
-        &:before, &:focus {
-            border-bottom: 1px solid white;
-        }
-
-        &:after {
-            border-bottom: 1px solid #fafafa;
-        }
-
-        &:hover:before {
-            border-bottom: 2px solid white !important;
-        }
-    }
-
-}
-
-
-.AppContainer {
-    padding-top: 70px;
-}
-
 .Card {
     max-width: 70vh;
-    margin: 20px auto;
+    margin: auto;
 
     &-header{
         display: flex;
         justify-content: space-between;
-    }
-}
-
-.LegendCard .Card-header{
-    padding: 20px 15px;
-}
-
-.Legend{
-    padding: 10px 0;
-    vertical-align: middle;
-    text-align: center;
-
-    &-picto {
-        height: 20px;
-        padding-left: 5px;
-        vertical-align: text-top;
     }
 }
