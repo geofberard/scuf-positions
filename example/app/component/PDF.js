@@ -1,6 +1,6 @@
 import React from "react";
 import {EPlayer, Position} from "../../../src";
-import {PLAYER_SCUF} from "../data/start-position-default";
+import {START_POSITIONS_DEFAULT} from "../data/start-position-default";
 import {EActions} from "../model/EAction";
 import {EPositions} from "../model/EPosition";
 import Player from "../../../src/container/Player";
@@ -34,7 +34,7 @@ const PDF = () => (
                     {EActions.map(action => (
                         <div className={"col-sm-3"}>
                             <div className={"Position-diagram"}>
-                                <Position positions={PLAYER_SCUF[position.id][action.id]}/>
+                                <Position positions={START_POSITIONS_DEFAULT[position.id][action.id]}/>
                             </div>
                         </div>
                     ))}

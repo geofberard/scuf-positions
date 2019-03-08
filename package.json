@@ -7,9 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server",
     "build": "webpack -p",
-    "start:example": "webpack-dev-server --config ./example/webpack.config.js --content-base example/",
-    "build:example": "webpack -p --config ./example/webpack.config.js",
-    "deploy:example": "webpack -p --config ./example/webpack.config.js && git commit -a -m Packaging && git push scuf HEAD:gh-pages --force  && git reset HEAD~1 --hard"
+    "start:example": "webpack-dev-server --mode development --config ./example/webpack.config.js --content-base example/",
+    "build:example": "webpack --mode production --config ./example/webpack.config.js",
+    "deploy:example": "webpack --mode production --config ./example/webpack.config.js && git commit -a -m Packaging && git push scuf HEAD:gh-pages --force  && git reset HEAD~1 --hard"
   },
   "author": "Geoffrey Berard <geoffrey.berard@gmail.com>",
   "license": "MIT",
