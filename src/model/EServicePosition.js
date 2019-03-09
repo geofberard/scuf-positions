@@ -1,4 +1,4 @@
-export const EPosition = {
+export const EServicePosition = {
     P1: {id:"P1",label:"P1"},
     P6: {id:"P6",label:"P6"},
     P5: {id:"P5",label:"P5"},
@@ -7,4 +7,4 @@ export const EPosition = {
     P2: {id:"P2",label:"P2"},
 };
 
-export const EPositions = Object.values(EPosition);
+export const EServicePositions = Object.values(EServicePosition);

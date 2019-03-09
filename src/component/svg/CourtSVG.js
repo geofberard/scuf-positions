@@ -5,7 +5,7 @@ export const COURT_SIZE = 900;
 const lineWidth = 5;
 const offset = 100;
 
-const Court = ({children}) => (
+const CourtSVG = ({children}) => (
     <g>
         <rect x={offset - lineWidth / 2}
               y={lineWidth / 2}
@@ -34,4 +34,4 @@ const Court = ({children}) => (
     </g>
 );
 
-export default Court;
+export default CourtSVG;

@@ -1,12 +1,13 @@
 var webpack = require('webpack');
 
 module.exports = (env, argv) => ({
-    entry: "./src/index.js",
+    entry: {
+        positions: __dirname + "/src/entry-point/positions.js",
+        pdf: __dirname + "/src/entry-point/pdf.js",
+    },
     output: {
-        path: __dirname + '/dist',
-        filename: 'index.js',
-        library: 'ReactContainerBoilerplate',
-        libraryTarget: 'umd',
+        path: __dirname ,
+        filename: "[name].gen.min.js",
     },
     module: {
         rules: [
@@ -31,7 +32,19 @@ module.exports = (env, argv) => ({
                     },
                     "sass-loader"
                 ]
-            }
+            },
+            {
+                test: /\.css/,
+                use: ["style-loader",
+                    "css-loader",
+                    {
+                        loader: "postcss-loader",
+                        options: {
+                            config: {path: __dirname, ctx: {env: argv.mode}},
+                            sourceMap: argv.mode !== "production",
+                        },
+                    }]
+            },
         ]
     }
 });

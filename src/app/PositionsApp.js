@@ -16,16 +16,17 @@ import Hidden from "@material-ui/core/Hidden/Hidden";
 import Drawer from "@material-ui/core/Drawer/Drawer";
 import { withStyles } from '@material-ui/core/styles';
 
-import {EPlayer} from "../../../src";
 
-import Player from "../../../src/container/Player";
-import {PositionsDepart} from "./PositionsDepart";
+import Player from "../component/svg/Player";
+import {EPlayerRole, EPlayerRoles} from "../model/EPlayerRole";
+import {PositionsDepart} from "../component/PositionsDepart";
 import {START_POSITIONS_DEFAULT} from "../data/start-position-default";
 import {START_POSITIONS_LIBERO} from "../data/start-position-libero";
 
-import "../../styles/positions.scss"
 import InputLabel from "@material-ui/core/InputLabel/InputLabel";
 import FormControl from "@material-ui/core/FormControl/FormControl";
+
+import "../styles/positions.scss"
 
 const ALL_PLAYERS = {
     id: "ALL_PLAYERS",
@@ -34,7 +35,7 @@ const ALL_PLAYERS = {
 
 const EPlayerFilter = {
     ALL_PLAYERS: ALL_PLAYERS,
-    ...EPlayer
+    ...EPlayerRole
 };
 
 const EPlayerFilters = Object.values(EPlayerFilter);
@@ -84,7 +85,7 @@ const styles = theme => ({
 const POSITIONS = [
     {
         id: "START_POSITIONS_DEFAULT",
-        label: "Coup de sifflet - standard",
+        label: "Service - standard",
         getComponent: focusedPlayer => (
             <Paper className="Card">
                 <PositionsDepart
@@ -95,7 +96,7 @@ const POSITIONS = [
     },
     {
         id: "START_POSITIONS_LIBERO",
-        label: "Coup de sifflet - libéro",
+        label: "Service - libéro",
         getComponent: focusedPlayer => (
             <Paper className="Card">
                 <PositionsDepart
@@ -170,14 +171,12 @@ class PositionsApp extends React.Component {
                 </List>
                 <Divider />
                 <ListSubheader>Légende</ListSubheader>
-                {Object.values(EPlayer)
+                {EPlayerRoles
                     .filter(role => !role.id.endsWith("_B"))
-                    .map(player => (
-                        <ListItem key={player.id}>
-                            <ListItemText primary={player.label.replace(" A", "")}/>
-                            <svg viewBox={`0 0 80 80`} className={classes.legendPicto}>
-                                <Player player={player} focus={true}/>
-                            </svg>
+                    .map(role => (
+                        <ListItem key={role.id}>
+                            <ListItemText primary={role.label.replace(" A", "")}/>
+                            <Player role={role} focus={true}/>
                         </ListItem>
                     ))}
                 <Divider />

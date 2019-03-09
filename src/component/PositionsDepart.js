@@ -1,12 +1,12 @@
 import React from "react";
 import * as PropTypes from "prop-types";
 
-import {Position} from "../../../src";
+import Position from "../component/svg/Position";
 import {EAction, EActions} from "../model/EAction";
-import {EPosition, EPositions} from "../model/EPosition";
+import {EServicePosition, EServicePositions} from "../model/EServicePosition";
 import StepSelector from "./StepSelector";
 
-import "../../styles/positions.scss"
+import "../styles/positions.scss"
 
 const modulo = (value, n) => ((value % n) + n) % n;
 const getNextElement = (current, diff, list) => list[modulo(list.indexOf(current) + diff, list.length)];
@@ -15,7 +15,7 @@ export class PositionsDepart extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            position: EPosition.P1,
+            position: EServicePosition.P1,
             action: EAction.ORIGINAL,
         };
         this.onPositionChange = this.onPositionChange.bind(this);
@@ -29,7 +29,7 @@ export class PositionsDepart extends React.Component {
     }
 
     onPositionNavigation(diff) {
-        this.setState({position: getNextElement(this.state.position, diff, EPositions)});
+        this.setState({position: getNextElement(this.state.position, diff, EServicePositions)});
     }
 
     onActionChange(action) {
@@ -47,7 +47,7 @@ export class PositionsDepart extends React.Component {
                 <div className="Card-header">
                     <StepSelector title="Position"
                                   value={position}
-                                  values={EPositions}
+                                  values={EServicePositions}
                                   onValueChange={this.onPositionChange}/>
                     <StepSelector title="Action"
                                   value={action}

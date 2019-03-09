@@ -7,7 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 
-import "../../styles/step-selector.scss"
+import "../styles/step-selector.scss"
 
 const modulo = (value, n) => ((value % n) + n) % n;
 const getNextElement = (current, diff, list) => list[modulo(list.indexOf(current) + diff, list.length)];

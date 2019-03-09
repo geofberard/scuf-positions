@@ -1,17 +1,18 @@
 import React from "react";
-import {EPlayer, Position} from "../../../src";
 import {START_POSITIONS_DEFAULT} from "../data/start-position-default";
+import {EPlayerRole} from "../model/EPlayerRole";
 import {EActions} from "../model/EAction";
-import {EPositions} from "../model/EPosition";
-import Player from "../../../src/container/Player";
+import {EServicePositions} from "../model/EServicePosition";
+import Player from "../component/svg/PlayerSVG";
+import Position from "../component/svg/Position";
 
-import "../../styles/pdf.scss"
+import "../styles/pdf.scss"
 import "bootstrap"
 import "bootstrap/dist/css/bootstrap.css"
 
-const legend = [EPlayer.SETTER,EPlayer.OPPOSITE,EPlayer.OUTSIDE_A,EPlayer.MIDDLE_A];
+const legend = [EPlayerRole.SETTER,EPlayerRole.OPPOSITE,EPlayerRole.OUTSIDE_A,EPlayerRole.MIDDLE_A];
 
-const PDF = () => (
+const PDFGeneratorApp = () => (
     <div>
             <div className={"row"}>
                 {legend.map(player => (
@@ -25,7 +26,7 @@ const PDF = () => (
                     </div>
                 ))}
         </div>
-        {EPositions.map(position => (
+        {EServicePositions.map(position => (
             <div className={"Position"}>
                 <div className={"row"}>
                     <div className="col-sm-2">
@@ -43,4 +44,5 @@ const PDF = () => (
         ))}
     </div>
 );
-export default PDF;
+
+export default PDFGeneratorApp;

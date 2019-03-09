@@ -1,4 +1,4 @@
-export const EPlayer = {
+export const EPlayerRole = {
     SETTER: {
         id: "SETTER",
         label: "Passe",
@@ -42,3 +42,5 @@ export const EPlayer = {
         understate: "#ffcc80",
     }
 };
+
+export const EPlayerRoles = Object.values(EPlayerRole);
