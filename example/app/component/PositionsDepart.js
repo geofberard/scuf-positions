@@ -12,8 +12,8 @@ const modulo = (value, n) => ((value % n) + n) % n;
 const getNextElement = (current, diff, list) => list[modulo(list.indexOf(current) + diff, list.length)];
 
 export class PositionsDepart extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             position: EPosition.P1,
             action: EAction.ORIGINAL,
@@ -61,14 +61,16 @@ export class PositionsDepart extends React.Component {
     }
 }
 
-PositionsDepart.propTypes= {
-    focusedPlayer:  PropTypes.object,
+PositionsDepart.propTypes = {
+    focusedPlayer: PropTypes.object,
     strategy: PropTypes.objectOf(
         PropTypes.objectOf(
-            PropTypes.shape({
-                px: PropTypes.number.isRequired,
-                py: PropTypes.number.isRequired,
-            })
+            PropTypes.objectOf(
+                PropTypes.shape({
+                    px: PropTypes.number.isRequired,
+                    py: PropTypes.number.isRequired,
+                })
+            )
         )
     ).isRequired
 };

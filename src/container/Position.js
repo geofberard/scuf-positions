@@ -11,10 +11,10 @@ const Position = ({positions, focus}) => (
     <svg viewBox={`0 0 ${MAX_SIZE} ${MAX_SIZE - 50}`}>
         <Court>
             {Object.values(EPlayer)
-                .map(player => <Player
-                    player={player}
-                    position={positions[player.id] || OUTSIDE}
-                    focus={focus === undefined || focus === player}/>)}
+                .map(player => <Player key={player.id}
+                                       player={player}
+                                       position={positions[player.id] || OUTSIDE}
+                                       focus={focus === undefined || focus === player}/>)}
         </Court>
     </svg>
 );

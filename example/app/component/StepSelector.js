@@ -31,8 +31,10 @@ export default class StepSelector extends React.Component {
         const {title, value, values} = this.props;
         return (
             <div className="StepSelector">
-                <IconButton className="StepSelector-arrow-left" aria-label="Précédant">
-                    <KeyboardArrowLeft onClick={() => this.onOptionNavigation(-1)} fontSize="large"/>
+                <IconButton className="StepSelector-arrow-left"
+                            aria-label="Précédant"
+                            onClick={() => this.onOptionNavigation(-1)}>
+                    <KeyboardArrowLeft fontSize="large"/>
                 </IconButton>
                 <FormControl className="StepSelector-select">
                     <InputLabel htmlFor={`option-select-${title}`}>{title}</InputLabel>
@@ -40,11 +42,13 @@ export default class StepSelector extends React.Component {
                             value={value.id}
                             onChange={this.onOptionChange}
                             inputProps={{name: 'title', id: `option-select-${title}`}}>
-                        {values.map(option => <option value={option.id}>{option.label}</option>)}
+                        {values.map(option => <option key={option.id} value={option.id}>{option.label}</option>)}
                     </Select>
                 </FormControl>
-                <IconButton className="StepSelector-arrow-right" aria-label="Suivant">
-                    <KeyboardArrowRight onClick={() => this.onOptionNavigation(1)} fontSize="large"/>
+                <IconButton className="StepSelector-arrow-right"
+                            aria-label="Suivant"
+                            onClick={() => this.onOptionNavigation(1)}>
+                    <KeyboardArrowRight fontSize="large"/>
                 </IconButton>
             </div>
         );

@@ -150,7 +150,7 @@ class PositionsApp extends React.Component {
                                     onChange={this.onPlayerChange}
                                     inputProps={{name: 'title', id: "option-select-player"}}>
                                 className={"PlayerSelect-input"}>
-                                {EPlayerFilters.map(player => (<option value={player.id}>{player.label}</option>))}
+                                {EPlayerFilters.map(player => (<option key={player.id} value={player.id}>{player.label}</option>))}
                             </Select>
                         </FormControl>
                     </ListItem>
@@ -173,7 +173,7 @@ class PositionsApp extends React.Component {
                 {Object.values(EPlayer)
                     .filter(role => !role.id.endsWith("_B"))
                     .map(player => (
-                        <ListItem>
+                        <ListItem key={player.id}>
                             <ListItemText primary={player.label.replace(" A", "")}/>
                             <svg viewBox={`0 0 80 80`} className={classes.legendPicto}>
                                 <Player player={player} focus={true}/>
