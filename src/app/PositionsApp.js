@@ -19,16 +19,15 @@ import { withStyles } from '@material-ui/core/styles';
 
 import Player from "../component/svg/Player";
 import ServicePositions from "../component/ServicePositions";
+import GamePosition from "../component/GamePositions";
 import {EPlayerRole, EPlayerRoles} from "../model/EPlayerRole";
-import {SERVICE_POSITIONS_DEFAULT} from "../data/service-positions-default";
-import {SERVICE_POSITIONS_LIBERO} from "../data/service-positions-libero";
+import {SERVICE_POSITIONS_DEFAULT, SERVICE_POSITIONS_LIBERO} from "../data/service-positions";
+import {GAME_POSITIONS_DEFAULT, GAME_POSITIONS_LIBERO} from "../data/game-positions";
 
 import InputLabel from "@material-ui/core/InputLabel/InputLabel";
 import FormControl from "@material-ui/core/FormControl/FormControl";
 
 import "../styles/positions.scss"
-import GamePosition from "../component/GamePositions";
-import {GAME_POSITIONS_DEFAULT, GAME_POSITIONS_LIBERO} from "../data/game-positions";
 
 const ALL_PLAYERS = {
     id: "ALL_PLAYERS",

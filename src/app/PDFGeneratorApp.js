@@ -1,5 +1,5 @@
 import React from "react";
-import {SERVICE_POSITIONS_DEFAULT} from "../data/service-positions-default";
+import {SERVICE_POSITIONS_DEFAULT} from "../data/service-positions";
 import {EPlayerRole} from "../model/EPlayerRole";
 import {EServiceActions} from "../model/EServiceAction";
 import {EServicePositions} from "../model/EServicePosition";

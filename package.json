@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --mode development",
     "build": "webpack --mode production",
-    "deploy": "webpack --mode production && git commit -a -m Packaging && git push HEAD:gh-pages --force  && git reset HEAD~1 --hard"
+    "deploy": "webpack --mode production && git add . && git commit -m Packaging && git push origin HEAD:gh-pages --force  && git reset HEAD~1 --hard"
   },
   "author": "Geoffrey Berard <geoffrey.berard@gmail.com>",
   "license": "MIT",

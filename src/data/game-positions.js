@@ -1,6 +1,7 @@
 import {EPlayerRole} from "../model/EPlayerRole";
 import {EGameAction} from "../model/EGameAction";
 import {EGamePosition} from "../model/EGamePosition";
+import {replaceLibero, switchPlayer} from "../utils/position-utils";
 
 const ORIGINAL_P1 = {px: 80, py: 70};
 const ORIGINAL_P2 = {px: 80, py: 20};
@@ -18,17 +19,6 @@ let RELANCE = {
     [EPlayerRole.OPPOSITE.id]: {px: 80, py: 60},
     [EPlayerRole.OUTSIDE_B.id]: {px: 55, py: 80},
     [EPlayerRole.MIDDLE_B.id]: ORIGINAL_P5,
-};
-
-function getNewPlayer(playerId, player1, player2) {
-    return playerId === player1.id ? player2.id : playerId === player2.id ? player1.id : playerId;
-}
-
-const switchPlayer = (position, player1, player2) => {
-    const newPosition = {};
-    Object.keys(position)
-        .forEach(playerId => newPosition[getNewPlayer(playerId, player1, player2)] = position[playerId])
-    return newPosition;
 };
 
 const configurePotitions = (position) => ({
@@ -104,22 +94,4 @@ export const GAME_POSITIONS_DEFAULT = {
     }),
 };
 
-const mapCollector  = (map, obj) => (map[obj.key] = obj.value, map);
-
-const switchLibero = (position) => {
-    const middleToChange = Object.keys(position)
-        .map(roleId => EPlayerRole[roleId])
-        .find(role => role === EPlayerRole.MIDDLE_A && position[role.id].py > 30
-            || role === EPlayerRole.MIDDLE_B && position[role.id].py > 30);
-    return switchPlayer(position, middleToChange, EPlayerRole.LIBERO);
-};
-
-export const GAME_POSITIONS_LIBERO = Object.keys(GAME_POSITIONS_DEFAULT)
-    .map(action => ({
-        key: action,
-        value: Object.keys(GAME_POSITIONS_DEFAULT[action])
-            .map(position => ({
-                key: position,
-                value: switchLibero(GAME_POSITIONS_DEFAULT[action][position]),
-            })).reduce(mapCollector, {}),
-    })).reduce(mapCollector, {});
+export const GAME_POSITIONS_LIBERO = replaceLibero(GAME_POSITIONS_DEFAULT);
