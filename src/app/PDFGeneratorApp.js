@@ -1,7 +1,7 @@
 import React from "react";
-import {START_POSITIONS_DEFAULT} from "../data/start-position-default";
+import {START_POSITIONS_DEFAULT} from "../data/service-positions-default";
 import {EPlayerRole} from "../model/EPlayerRole";
-import {EActions} from "../model/EAction";
+import {EServiceActions} from "../model/EServiceAction";
 import {EServicePositions} from "../model/EServicePosition";
 import Player from "../component/svg/PlayerSVG";
 import Position from "../component/svg/Position";
@@ -32,7 +32,7 @@ const PDFGeneratorApp = () => (
                     <div className="col-sm-2">
                         <div className={"Position-label"}>{position.label}</div>
                     </div>
-                    {EActions.map(action => (
+                    {EServiceActions.map(action => (
                         <div className={"col-sm-3"}>
                             <div className={"Position-diagram"}>
                                 <Position positions={START_POSITIONS_DEFAULT[position.id][action.id]}/>

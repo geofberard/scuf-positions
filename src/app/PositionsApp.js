@@ -18,10 +18,10 @@ import { withStyles } from '@material-ui/core/styles';
 
 
 import Player from "../component/svg/Player";
+import ServicePositions from "../component/ServicePositions";
 import {EPlayerRole, EPlayerRoles} from "../model/EPlayerRole";
-import {PositionsDepart} from "../component/PositionsDepart";
-import {START_POSITIONS_DEFAULT} from "../data/start-position-default";
-import {START_POSITIONS_LIBERO} from "../data/start-position-libero";
+import {START_POSITIONS_DEFAULT} from "../data/service-positions-default";
+import {START_POSITIONS_LIBERO} from "../data/service-positions-libero";
 
 import InputLabel from "@material-ui/core/InputLabel/InputLabel";
 import FormControl from "@material-ui/core/FormControl/FormControl";
@@ -88,7 +88,7 @@ const POSITIONS = [
         label: "Service - standard",
         getComponent: focusedPlayer => (
             <Paper className="Card">
-                <PositionsDepart
+                <ServicePositions
                     strategy={START_POSITIONS_DEFAULT}
                     focusedPlayer={focusedPlayer}/>
             </Paper>
@@ -99,7 +99,7 @@ const POSITIONS = [
         label: "Service - libéro",
         getComponent: focusedPlayer => (
             <Paper className="Card">
-                <PositionsDepart
+                <ServicePositions
                     strategy={START_POSITIONS_LIBERO}
                     focusedPlayer={focusedPlayer}/>
             </Paper>

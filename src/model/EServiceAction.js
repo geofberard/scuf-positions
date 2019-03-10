@@ -1,7 +1,7 @@
-export const EAction = {
+export const EServiceAction = {
     ORIGINAL: {id: "ORIGINAL", label: "Rotation"},
     SERVING: {id: "SERVING", label: "Service"},
     RECEIVING: {id: "RECEIVING", label: "Réception"},
 };
 
-export const EActions = Object.values(EAction);
+export const EServiceActions = Object.values(EServiceAction);
