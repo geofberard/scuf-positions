@@ -2,7 +2,6 @@ import {EPlayerRole} from "../model/EPlayerRole";
 import {EServiceAction} from "../model/EServiceAction";
 import {EServicePosition} from "../model/EServicePosition";
 
-
 const ORIGINAL_P1 = {px: 80, py: 70};
 const ORIGINAL_P2 = {px: 80, py: 20};
 const ORIGINAL_P3 = {px: 50, py: 20};
@@ -16,7 +15,7 @@ const RECEIVING_RIGHT = {px: 80, py: 65};
 const SETTING_PLACE = {px: 65, py: 10};
 const SERVICE_PLACE = {px: 80, py: 110};
 
-export const START_POSITIONS_DEFAULT = {
+export const SERVICE_POSITIONS_DEFAULT = {
     [EServicePosition.P1.id]: {
         [EServiceAction.ORIGINAL.id]: {
             [EPlayerRole.SETTER.id]: ORIGINAL_P1,

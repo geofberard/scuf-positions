@@ -20,13 +20,15 @@ import { withStyles } from '@material-ui/core/styles';
 import Player from "../component/svg/Player";
 import ServicePositions from "../component/ServicePositions";
 import {EPlayerRole, EPlayerRoles} from "../model/EPlayerRole";
-import {START_POSITIONS_DEFAULT} from "../data/service-positions-default";
-import {START_POSITIONS_LIBERO} from "../data/service-positions-libero";
+import {SERVICE_POSITIONS_DEFAULT} from "../data/service-positions-default";
+import {SERVICE_POSITIONS_LIBERO} from "../data/service-positions-libero";
 
 import InputLabel from "@material-ui/core/InputLabel/InputLabel";
 import FormControl from "@material-ui/core/FormControl/FormControl";
 
 import "../styles/positions.scss"
+import GamePosition from "../component/GamePositions";
+import {GAME_POSITIONS_DEFAULT} from "../data/game-positions-default";
 
 const ALL_PLAYERS = {
     id: "ALL_PLAYERS",
@@ -75,32 +77,38 @@ const styles = theme => ({
     grow: {
         flexGrow: 1,
     },
-    legendPicto: {
-        height: "20px",
-        paddingLeft: "5px",
-        verticalAlign: "text-top",
-    }
 });
 
 const POSITIONS = [
     {
-        id: "START_POSITIONS_DEFAULT",
-        label: "Service - standard",
+        id: "GAME_POSITIONS_DEFAULT",
+        label: "Jeu - standard",
         getComponent: focusedPlayer => (
             <Paper className="Card">
-                <ServicePositions
-                    strategy={START_POSITIONS_DEFAULT}
+                <GamePosition
+                    strategy={GAME_POSITIONS_DEFAULT}
                     focusedPlayer={focusedPlayer}/>
             </Paper>
         )
     },
     {
-        id: "START_POSITIONS_LIBERO",
+        id: "SERVICE_POSITIONS_DEFAULT",
+        label: "Service - standard",
+        getComponent: focusedPlayer => (
+            <Paper className="Card">
+                <ServicePositions
+                    strategy={SERVICE_POSITIONS_DEFAULT}
+                    focusedPlayer={focusedPlayer}/>
+            </Paper>
+        )
+    },
+    {
+        id: "SERVICE_POSITIONS_LIBERO",
         label: "Service - libéro",
         getComponent: focusedPlayer => (
             <Paper className="Card">
                 <ServicePositions
-                    strategy={START_POSITIONS_LIBERO}
+                    strategy={SERVICE_POSITIONS_LIBERO}
                     focusedPlayer={focusedPlayer}/>
             </Paper>
         )

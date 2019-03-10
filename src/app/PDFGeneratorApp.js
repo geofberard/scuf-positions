@@ -1,5 +1,5 @@
 import React from "react";
-import {START_POSITIONS_DEFAULT} from "../data/service-positions-default";
+import {SERVICE_POSITIONS_DEFAULT} from "../data/service-positions-default";
 import {EPlayerRole} from "../model/EPlayerRole";
 import {EServiceActions} from "../model/EServiceAction";
 import {EServicePositions} from "../model/EServicePosition";
@@ -35,7 +35,7 @@ const PDFGeneratorApp = () => (
                     {EServiceActions.map(action => (
                         <div className={"col-sm-3"}>
                             <div className={"Position-diagram"}>
-                                <Position positions={START_POSITIONS_DEFAULT[position.id][action.id]}/>
+                                <Position positions={SERVICE_POSITIONS_DEFAULT[position.id][action.id]}/>
                             </div>
                         </div>
                     ))}
