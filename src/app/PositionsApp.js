@@ -147,7 +147,7 @@ class PositionsApp extends React.Component {
     };
 
     changePosition(position) {
-        return () => this.setState({position});
+        return () => this.setState({position, mobileOpen: !this.state.mobileOpen});
     };
 
     goToPdf() {
