@@ -28,7 +28,7 @@ import FormControl from "@material-ui/core/FormControl/FormControl";
 
 import "../styles/positions.scss"
 import GamePosition from "../component/GamePositions";
-import {GAME_POSITIONS_DEFAULT} from "../data/game-positions-default";
+import {GAME_POSITIONS_DEFAULT, GAME_POSITIONS_LIBERO} from "../data/game-positions";
 
 const ALL_PLAYERS = {
     id: "ALL_PLAYERS",
@@ -81,17 +81,6 @@ const styles = theme => ({
 
 const POSITIONS = [
     {
-        id: "GAME_POSITIONS_DEFAULT",
-        label: "Jeu - standard",
-        getComponent: focusedPlayer => (
-            <Paper className="Card">
-                <GamePosition
-                    strategy={GAME_POSITIONS_DEFAULT}
-                    focusedPlayer={focusedPlayer}/>
-            </Paper>
-        )
-    },
-    {
         id: "SERVICE_POSITIONS_DEFAULT",
         label: "Service - standard",
         getComponent: focusedPlayer => (
@@ -109,6 +98,28 @@ const POSITIONS = [
             <Paper className="Card">
                 <ServicePositions
                     strategy={SERVICE_POSITIONS_LIBERO}
+                    focusedPlayer={focusedPlayer}/>
+            </Paper>
+        )
+    },
+    {
+        id: "GAME_POSITIONS_DEFAULT",
+        label: "Jeu - standard",
+        getComponent: focusedPlayer => (
+            <Paper className="Card">
+                <GamePosition
+                    strategy={GAME_POSITIONS_DEFAULT}
+                    focusedPlayer={focusedPlayer}/>
+            </Paper>
+        )
+    },
+    {
+        id: "GAME_POSITIONS_LIBERO",
+        label: "Jeu - libéro",
+        getComponent: focusedPlayer => (
+            <Paper className="Card">
+                <GamePosition
+                    strategy={GAME_POSITIONS_LIBERO}
                     focusedPlayer={focusedPlayer}/>
             </Paper>
         )

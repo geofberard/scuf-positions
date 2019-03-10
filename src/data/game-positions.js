@@ -35,6 +35,7 @@ const configurePotitions = (position) => ({
     [EGamePosition.FRONT.id]: position,
     [EGamePosition.BACK.id]: switchPlayer(position, EPlayerRole.SETTER, EPlayerRole.OPPOSITE)
 });
+
 let MIDDLE = {
     [EPlayerRole.SETTER.id]: {px: 80, py: 20},
     [EPlayerRole.OUTSIDE_A.id]: {px: 20, py: 20},
@@ -43,6 +44,7 @@ let MIDDLE = {
     [EPlayerRole.OUTSIDE_B.id]: OUSTIDE_BACK_MIDDLE,
     [EPlayerRole.MIDDLE_B.id]: {px: 30, py: 55},
 };
+
 export const GAME_POSITIONS_DEFAULT = {
     [EGameAction.ORIGINAL.id]: configurePotitions({
         [EPlayerRole.SETTER.id]: ORIGINAL_P2,
@@ -101,3 +103,23 @@ export const GAME_POSITIONS_DEFAULT = {
         [EPlayerRole.MIDDLE_B.id]: {px: 10, py: 55},
     }),
 };
+
+const mapCollector  = (map, obj) => (map[obj.key] = obj.value, map);
+
+const switchLibero = (position) => {
+    const middleToChange = Object.keys(position)
+        .map(roleId => EPlayerRole[roleId])
+        .find(role => role === EPlayerRole.MIDDLE_A && position[role.id].py > 30
+            || role === EPlayerRole.MIDDLE_B && position[role.id].py > 30);
+    return switchPlayer(position, middleToChange, EPlayerRole.LIBERO);
+};
+
+export const GAME_POSITIONS_LIBERO = Object.keys(GAME_POSITIONS_DEFAULT)
+    .map(action => ({
+        key: action,
+        value: Object.keys(GAME_POSITIONS_DEFAULT[action])
+            .map(position => ({
+                key: position,
+                value: switchLibero(GAME_POSITIONS_DEFAULT[action][position]),
+            })).reduce(mapCollector, {}),
+    })).reduce(mapCollector, {});
