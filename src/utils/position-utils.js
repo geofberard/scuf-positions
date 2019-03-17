@@ -15,10 +15,9 @@ export const switchPlayer = (position, player1, player2) => {
 const switchLibero = (position) => {
     const middleToChange = Object.keys(position)
         .map(roleId => EPlayerRole[roleId])
-        .find(role =>
-            (role === EPlayerRole.MIDDLE_A || role === EPlayerRole.MIDDLE_B)
-            && position[role.id].py > 30
-            && position[role.id].py < 100);
+        .filter(role => role === EPlayerRole.MIDDLE_A || role === EPlayerRole.MIDDLE_B)
+        .filter(role => position[role.id].py > 30 && position[role.id].py < 100)
+        .sort((roleA,roleB) => position[roleB.id].py - position[roleA.id].py)[0];
     return middleToChange ? switchPlayer(position, middleToChange, EPlayerRole.LIBERO) : position;
 };
 
