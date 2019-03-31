@@ -84,8 +84,8 @@ const styles = theme => ({
 
 const POSITIONS = [
     {
-        id: "SERVICE_POSITIONS_DEFAULT",
-        label: i18n(ResourceKey.SERVICE_POSITIONS_DEFAULT),
+        id: "P_SERVICE_POSITIONS_DEFAULT",
+        label: i18n(ResourceKey.P_SERVICE_POSITIONS_DEFAULT),
         getComponent: focusedPlayer => (
             <Paper className="Card">
                 <ServicePositions
@@ -95,8 +95,8 @@ const POSITIONS = [
         )
     },
     {
-        id: "SERVICE_POSITIONS_LIBERO",
-        label: i18n(ResourceKey.SERVICE_POSITIONS_LIBERO),
+        id: "P_SERVICE_POSITIONS_LIBERO",
+        label: i18n(ResourceKey.P_SERVICE_POSITIONS_LIBERO),
         getComponent: focusedPlayer => (
             <Paper className="Card">
                 <ServicePositions
@@ -106,8 +106,8 @@ const POSITIONS = [
         )
     },
     {
-        id: "GAME_POSITIONS_DEFAULT",
-        label: i18n(ResourceKey.GAME_POSITIONS_DEFAULT),
+        id: "P_GAME_POSITIONS_DEFAULT",
+        label: i18n(ResourceKey.P_GAME_POSITIONS_DEFAULT),
         getComponent: focusedPlayer => (
             <Paper className="Card">
                 <GamePosition
@@ -117,8 +117,8 @@ const POSITIONS = [
         )
     },
     {
-        id: "GAME_POSITIONS_LIBERO",
-        label: i18n(ResourceKey.GAME_POSITIONS_LIBERO),
+        id: "P_GAME_POSITIONS_LIBERO",
+        label: i18n(ResourceKey.P_GAME_POSITIONS_LIBERO),
         getComponent: focusedPlayer => (
             <Paper className="Card">
                 <GamePosition
@@ -166,7 +166,7 @@ class PositionsApp extends React.Component {
                 <div className={classes.toolbar}>
                     <ListItem>
                         <FormControl>
-                            <InputLabel htmlFor={"option-select-player"}>Rôle</InputLabel>
+                            <InputLabel htmlFor={"option-select-player"}>{i18n(ResourceKey.ROLE)}</InputLabel>
                             <Select native
                                     color="inherit"
                                     value={this.state.focus.id}
@@ -180,7 +180,7 @@ class PositionsApp extends React.Component {
                 </div>
                 <Divider />
                 <List>
-                    <ListSubheader>Positions</ListSubheader>
+                    <ListSubheader>{i18n(ResourceKey.POSITIONS)}</ListSubheader>
                     {POSITIONS.map(position => (
                         <ListItem button key={position.id}
                                   id={position.id}
@@ -192,7 +192,7 @@ class PositionsApp extends React.Component {
                     ))}
                 </List>
                 <Divider />
-                <ListSubheader>Légende</ListSubheader>
+                <ListSubheader>{i18n(ResourceKey.LEGENDE)}</ListSubheader>
                 {EPlayerRoles
                     .filter(role => !role.id.endsWith("_B"))
                     .map(role => (
@@ -204,7 +204,7 @@ class PositionsApp extends React.Component {
                 <Divider />
                 <List>
                     <ListItem button onClick={this.goToPdf}>
-                        <ListItemText primary="Télécharger le PDF" />
+                        <ListItemText primary={i18n(ResourceKey.DOWNLOAD)} />
                     </ListItem>
                 </List>
             </div>
@@ -222,7 +222,7 @@ class PositionsApp extends React.Component {
                             <MenuIcon/>
                         </IconButton>
                         <Typography className={"Title"} variant="headline" color="inherit">
-                            SCUF - Positions
+                            {i18n(ResourceKey.TITLE)}
                         </Typography>
                     </Toolbar>
                 </AppBar>
