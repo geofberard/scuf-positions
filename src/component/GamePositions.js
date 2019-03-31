@@ -7,10 +7,12 @@ import {EGameActions} from "../model/EGameAction";
 
 
 import "../styles/positions.scss"
+import {ResourceKey} from "../resources/ResourceKey";
+import {i18n} from "../resources/label-utils";
 
 const GamePosition = ({strategy, focusedPlayer}) => (
-    <TwoLevelPositions level1={{label: "Action", values: EGameActions}}
-                       level2={{label: "Passe", values: EGamePositions}}
+    <TwoLevelPositions level1={{label: i18n(ResourceKey.GAME_ACTION), values: EGameActions}}
+                       level2={{label: i18n(ResourceKey.GAME_POSITION), values: EGamePositions}}
                        strategy={strategy}
                        focusedPlayer={focusedPlayer}/>
 );

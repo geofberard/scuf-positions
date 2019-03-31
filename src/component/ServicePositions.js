@@ -6,10 +6,12 @@ import {EServiceActions} from "../model/EServiceAction";
 import {EServicePositions} from "../model/EServicePosition";
 
 import "../styles/positions.scss"
+import {i18n} from "../resources/label-utils";
+import {ResourceKey} from "../resources/ResourceKey";
 
 const ServicePositions = ({strategy, focusedPlayer}) => (
-    <TwoLevelPositions level1={{label: "Position", values: EServicePositions}}
-                       level2={{label: "Action", values: EServiceActions}}
+    <TwoLevelPositions level1={{label: i18n(ResourceKey.SERVICE_POSITION), values: EServicePositions}}
+                       level2={{label: i18n(ResourceKey.SERVICE_ACTION), values: EServiceActions}}
                        strategy={strategy}
                        focusedPlayer={focusedPlayer}/>
 );

@@ -16,6 +16,7 @@ import Hidden from "@material-ui/core/Hidden/Hidden";
 import Drawer from "@material-ui/core/Drawer/Drawer";
 import { withStyles } from '@material-ui/core/styles';
 
+import "../resources/default_resource";
 
 import Player from "../component/svg/Player";
 import ServicePositions from "../component/ServicePositions";
@@ -28,6 +29,9 @@ import InputLabel from "@material-ui/core/InputLabel/InputLabel";
 import FormControl from "@material-ui/core/FormControl/FormControl";
 
 import "../styles/positions.scss"
+import {ResourceKey} from "../resources/ResourceKey";
+import {i18n, init} from "../resources/label-utils";
+import {LABELS} from "../resources/default_resource";
 
 const ALL_PLAYERS = {
     id: "ALL_PLAYERS",
@@ -81,7 +85,7 @@ const styles = theme => ({
 const POSITIONS = [
     {
         id: "SERVICE_POSITIONS_DEFAULT",
-        label: "Service - standard",
+        label: i18n(ResourceKey.SERVICE_POSITIONS_DEFAULT),
         getComponent: focusedPlayer => (
             <Paper className="Card">
                 <ServicePositions
@@ -92,7 +96,7 @@ const POSITIONS = [
     },
     {
         id: "SERVICE_POSITIONS_LIBERO",
-        label: "Service - libéro",
+        label: i18n(ResourceKey.SERVICE_POSITIONS_LIBERO),
         getComponent: focusedPlayer => (
             <Paper className="Card">
                 <ServicePositions
@@ -103,7 +107,7 @@ const POSITIONS = [
     },
     {
         id: "GAME_POSITIONS_DEFAULT",
-        label: "Jeu - standard",
+        label: i18n(ResourceKey.GAME_POSITIONS_DEFAULT),
         getComponent: focusedPlayer => (
             <Paper className="Card">
                 <GamePosition
@@ -114,7 +118,7 @@ const POSITIONS = [
     },
     {
         id: "GAME_POSITIONS_LIBERO",
-        label: "Jeu - libéro",
+        label: i18n(ResourceKey.GAME_POSITIONS_LIBERO),
         getComponent: focusedPlayer => (
             <Paper className="Card">
                 <GamePosition
