@@ -5,10 +5,8 @@ init({
     [ResourceKey.TITLE]: "SCUF - Positions",
 
     [ResourceKey.POSITIONS]: "Positions",
-    [ResourceKey.P_SERVICE_POSITIONS_DEFAULT]: "Service - standard",
-    [ResourceKey.P_SERVICE_POSITIONS_LIBERO]: "Service - libéro",
-    [ResourceKey.P_GAME_POSITIONS_DEFAULT]: "Jeu - standard",
-    [ResourceKey.P_GAME_POSITIONS_LIBERO]: "Jeu - libéro",
+    [ResourceKey.P_SERVICE]: "Service",
+    [ResourceKey.P_GAME]: "Jeu",
 
     [ResourceKey.GAME_ACTION]: "Action",
     [ResourceKey.GA_ORIGINAL]: "Position",
@@ -48,6 +46,10 @@ init({
 
     [ResourceKey.LEGENDE]: "Legende",
     [ResourceKey.DOWNLOAD]: "Télécharger le PDF",
+
+    [ResourceKey.LIBERO_WITH]: "Avec libéro",
+    [ResourceKey.LIBERO_WITHOUT]: "Sans libéro",
+
 });
 
 if(window.location.search.includes('?l=geek')) {
@@ -55,9 +57,8 @@ if(window.location.search.includes('?l=geek')) {
         [ResourceKey.TITLE]: "CHKUF - Posichions",
 
         [ResourceKey.POSITIONS]: "Posichions",
-        [ResourceKey.P_SERVICE_POSITIONS_DEFAULT]: "Cherviche - chtandard",
-        [ResourceKey.P_SERVICE_POSITIONS_LIBERO]: "Cherviche - libéro",
-        [ResourceKey.P_GAME_POSITIONS_DEFAULT]: "Jeu - chtandard",
+        [ResourceKey.P_SERVICE]: "Cherviche",
+        [ResourceKey.P_GAME]: "Jeu",
 
         [ResourceKey.GAME_ACTION]: "Akchion",
         [ResourceKey.GA_ORIGINAL]: "Posichion",
@@ -84,5 +85,7 @@ if(window.location.search.includes('?l=geek')) {
 
         [ResourceKey.LEGENDE]: "Lechende",
         [ResourceKey.DOWNLOAD]: "Télécharcher le PDF",
+
+        [ResourceKey.LIBERO_WITHOUT]: "Chans libéro",
     });
 }

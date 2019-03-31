@@ -5,33 +5,38 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import MenuIcon from '@material-ui/icons/Menu';
-import Divider from "@material-ui/core/Divider/Divider";
+import Divider from "@material-ui/core/Divider";
 import List from "@material-ui/core/List/List";
 import ListItem from "@material-ui/core/ListItem/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListSubheader from "@material-ui/core/ListSubheader";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import IconButton from "@material-ui/core/IconButton";
-import Hidden from "@material-ui/core/Hidden/Hidden";
-import Drawer from "@material-ui/core/Drawer/Drawer";
+import Hidden from "@material-ui/core/Hidden";
+import Drawer from "@material-ui/core/Drawer";
+import Switch from "@material-ui/core/Switch";
 import { withStyles } from '@material-ui/core/styles';
 
 import "../resources/default_resource";
 
 import Player from "../component/svg/Player";
-import ServicePositions from "../component/ServicePositions";
-import GamePosition from "../component/GamePositions";
 import {EPlayerRole, EPlayerRoles} from "../model/EPlayerRole";
-import {SERVICE_POSITIONS_DEFAULT, SERVICE_POSITIONS_LIBERO} from "../data/service-positions";
-import {GAME_POSITIONS_DEFAULT, GAME_POSITIONS_LIBERO} from "../data/game-positions";
+import {SERVICE_POSITIONS_DEFAULT} from "../data/service-positions";
+import {GAME_POSITIONS_DEFAULT} from "../data/game-positions";
 
 import InputLabel from "@material-ui/core/InputLabel/InputLabel";
 import FormControl from "@material-ui/core/FormControl/FormControl";
 
 import "../styles/positions.scss"
 import {ResourceKey} from "../resources/ResourceKey";
-import {i18n, init} from "../resources/label-utils";
-import {LABELS} from "../resources/default_resource";
+import {i18n} from "../resources/label-utils";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import {replaceLibero} from "../utils/position-utils";
+import {EServicePositions} from "../model/EServicePosition";
+import {EServiceActions} from "../model/EServiceAction";
+import {EGameActions} from "../model/EGameAction";
+import {EGamePositions} from "../model/EGamePosition";
+import TwoLevelPositions from "../component/TwoLevelPositions";
 
 const ALL_PLAYERS = {
     id: "ALL_PLAYERS",
@@ -84,46 +89,28 @@ const styles = theme => ({
 
 const POSITIONS = [
     {
-        id: "P_SERVICE_POSITIONS_DEFAULT",
-        label: i18n(ResourceKey.P_SERVICE_POSITIONS_DEFAULT),
-        getComponent: focusedPlayer => (
+        id: "SERVICE_POSITIONS",
+        label: i18n(ResourceKey.P_SERVICE),
+        getComponent: (focusedPlayer, libero) => (
             <Paper className="Card">
-                <ServicePositions
-                    strategy={SERVICE_POSITIONS_DEFAULT}
-                    focusedPlayer={focusedPlayer}/>
+                <TwoLevelPositions key={"SERVICE_POSITIONS"}
+                                   level1={{label: i18n(ResourceKey.SERVICE_POSITION), values: EServicePositions}}
+                                   level2={{label: i18n(ResourceKey.SERVICE_ACTION), values: EServiceActions}}
+                                   strategy={libero ? replaceLibero(SERVICE_POSITIONS_DEFAULT) : SERVICE_POSITIONS_DEFAULT}
+                                   focusedPlayer={focusedPlayer}/>
             </Paper>
         )
     },
     {
-        id: "P_SERVICE_POSITIONS_LIBERO",
-        label: i18n(ResourceKey.P_SERVICE_POSITIONS_LIBERO),
-        getComponent: focusedPlayer => (
+        id: "GAME_POSITIONS",
+        label: i18n(ResourceKey.P_GAME),
+        getComponent: (focusedPlayer, libero) => (
             <Paper className="Card">
-                <ServicePositions
-                    strategy={SERVICE_POSITIONS_LIBERO}
-                    focusedPlayer={focusedPlayer}/>
-            </Paper>
-        )
-    },
-    {
-        id: "P_GAME_POSITIONS_DEFAULT",
-        label: i18n(ResourceKey.P_GAME_POSITIONS_DEFAULT),
-        getComponent: focusedPlayer => (
-            <Paper className="Card">
-                <GamePosition
-                    strategy={GAME_POSITIONS_DEFAULT}
-                    focusedPlayer={focusedPlayer}/>
-            </Paper>
-        )
-    },
-    {
-        id: "P_GAME_POSITIONS_LIBERO",
-        label: i18n(ResourceKey.P_GAME_POSITIONS_LIBERO),
-        getComponent: focusedPlayer => (
-            <Paper className="Card">
-                <GamePosition
-                    strategy={GAME_POSITIONS_LIBERO}
-                    focusedPlayer={focusedPlayer}/>
+                <TwoLevelPositions key={"GAME_POSITIONS"}
+                                   level1={{label: i18n(ResourceKey.GAME_ACTION), values: EGameActions}}
+                                   level2={{label: i18n(ResourceKey.GAME_POSITION), values: EGamePositions}}
+                                   strategy={libero ? replaceLibero(GAME_POSITIONS_DEFAULT) : GAME_POSITIONS_DEFAULT}
+                                   focusedPlayer={focusedPlayer}/>
             </Paper>
         )
     },
@@ -135,19 +122,25 @@ class PositionsApp extends React.Component {
         this.state = {
             position: POSITIONS[0],
             focus: ALL_PLAYERS,
+            libero: false,
             mobileOpen: false,
         };
         this.onPlayerChange = this.onPlayerChange.bind(this);
+        this.toggleLibero = this.toggleLibero.bind(this);
         this.handleDrawerToggle = this.handleDrawerToggle.bind(this);
         this.changePosition = this.changePosition.bind(this);
     }
 
     onPlayerChange(event) {
-        this.setState({focus: EPlayerFilter[event.target.value]});
+        this.setState({focus: EPlayerFilter[event.target.value], mobileOpen: false});
     }
 
+    toggleLibero() {
+        this.setState({libero: !this.state.libero, mobileOpen: false});
+    };
+
     handleDrawerToggle() {
-        this.setState({ mobileOpen: !this.state.mobileOpen });
+        this.setState({ mobileOpen: !this.state.mobileOpen});
     };
 
     changePosition(position) {
@@ -176,6 +169,19 @@ class PositionsApp extends React.Component {
                                 {EPlayerFilters.map(player => (<option key={player.id} value={player.id}>{player.label}</option>))}
                             </Select>
                         </FormControl>
+                    </ListItem>
+                    <ListItem>
+                        <FormControlLabel
+                            control={
+                                <Switch
+                                    checked={this.state.libero}
+                                    onChange={this.toggleLibero}
+                                    value="checkedA"
+                                    color="primary"
+                                />
+                            }
+                            label={this.state.libero ? i18n(ResourceKey.LIBERO_WITH) : i18n(ResourceKey.LIBERO_WITHOUT)}
+                        />
                     </ListItem>
                 </div>
                 <Divider />
@@ -249,7 +255,7 @@ class PositionsApp extends React.Component {
                 </nav>
                 <main className={classes.content}>
                     <div className={classes.toolbar}/>
-                    {this.state.position.getComponent(this.state.focus === ALL_PLAYERS ? undefined : this.state.focus)}
+                    {this.state.position.getComponent(this.state.focus === ALL_PLAYERS ? undefined : this.state.focus, this.state.libero)}
                 </main>
             </div>
         );
