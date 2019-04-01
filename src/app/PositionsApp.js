@@ -21,8 +21,9 @@ import "../resources/default_resource";
 
 import Player from "../component/svg/Player";
 import {EPlayerRole, EPlayerRoles} from "../model/EPlayerRole";
-import {SERVICE_POSITIONS_DEFAULT} from "../data/service-positions";
-import {GAME_POSITIONS_DEFAULT} from "../data/game-positions";
+import {SERVICE_POSITIONS} from "../data/service-positions";
+import {ATTACK_POSITIONS} from "../data/attack-positions";
+import {DEFENSE_POSITIONS} from "../data/defense-positions";
 
 import InputLabel from "@material-ui/core/InputLabel/InputLabel";
 import FormControl from "@material-ui/core/FormControl/FormControl";
@@ -34,9 +35,10 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import {replaceLibero} from "../utils/position-utils";
 import {EServicePositions} from "../model/EServicePosition";
 import {EServiceActions} from "../model/EServiceAction";
-import {EGameActions} from "../model/EGameAction";
+import {EAttackActions} from "../model/EAttackAction";
 import {EGamePositions} from "../model/EGamePosition";
 import TwoLevelPositions from "../component/TwoLevelPositions";
+import {EDefenseAction, EDefenseActions} from "../model/EDefenseAction";
 
 const ALL_PLAYERS = {
     id: "ALL_PLAYERS",
@@ -96,20 +98,33 @@ const POSITIONS = [
                 <TwoLevelPositions key={"SERVICE_POSITIONS"}
                                    level1={{label: i18n(ResourceKey.SERVICE_POSITION), values: EServicePositions}}
                                    level2={{label: i18n(ResourceKey.SERVICE_ACTION), values: EServiceActions}}
-                                   strategy={libero ? replaceLibero(SERVICE_POSITIONS_DEFAULT) : SERVICE_POSITIONS_DEFAULT}
+                                   strategy={libero ? replaceLibero(SERVICE_POSITIONS) : SERVICE_POSITIONS}
                                    focusedPlayer={focusedPlayer}/>
             </Paper>
         )
     },
     {
-        id: "GAME_POSITIONS",
-        label: i18n(ResourceKey.P_GAME),
+        id: "ATTACK_POSITIONS",
+        label: i18n(ResourceKey.P_ATTACK),
         getComponent: (focusedPlayer, libero) => (
             <Paper className="Card">
-                <TwoLevelPositions key={"GAME_POSITIONS"}
-                                   level1={{label: i18n(ResourceKey.GAME_ACTION), values: EGameActions}}
+                <TwoLevelPositions key={"ATTACK_POSITIONS"}
+                                   level1={{label: i18n(ResourceKey.ATTACK_ACTION), values: EAttackActions}}
                                    level2={{label: i18n(ResourceKey.GAME_POSITION), values: EGamePositions}}
-                                   strategy={libero ? replaceLibero(GAME_POSITIONS_DEFAULT) : GAME_POSITIONS_DEFAULT}
+                                   strategy={libero ? replaceLibero(ATTACK_POSITIONS) : ATTACK_POSITIONS}
+                                   focusedPlayer={focusedPlayer}/>
+            </Paper>
+        )
+    },
+    {
+        id: "DEFENSE_POSITIONS",
+        label: i18n(ResourceKey.P_DEFENSE),
+        getComponent: (focusedPlayer, libero) => (
+            <Paper className="Card">
+                <TwoLevelPositions key={"DEFENSE_POSITIONS"}
+                                   level1={{label: i18n(ResourceKey.DEFENSE_ACTION), values: EDefenseActions}}
+                                   level2={{label: i18n(ResourceKey.GAME_POSITION), values: EGamePositions}}
+                                   strategy={libero ? replaceLibero(DEFENSE_POSITIONS) : DEFENSE_POSITIONS}
                                    focusedPlayer={focusedPlayer}/>
             </Paper>
         )

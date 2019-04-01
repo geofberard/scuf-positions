@@ -6,17 +6,21 @@ init({
 
     [ResourceKey.POSITIONS]: "Positions",
     [ResourceKey.P_SERVICE]: "Service",
-    [ResourceKey.P_GAME]: "Jeu",
+    [ResourceKey.P_ATTACK]: "Attaque",
+    [ResourceKey.P_DEFENSE]: "Défense",
 
-    [ResourceKey.GAME_ACTION]: "Action",
-    [ResourceKey.GA_ORIGINAL]: "Position",
-    [ResourceKey.GA_RELANCE]: "Relance",
-    [ResourceKey.GA_ATTACK_OUTSIDE]: "Attaque Latérale",
-    [ResourceKey.GA_ATTACK_MIDDLE]: "Attaque Centrale",
-    [ResourceKey.GA_ATTACK_OPPOSITE]: "Attaque Opposée",
-    [ResourceKey.GA_DEFENSE_OUTSIDE]: "Défense Latérale",
-    [ResourceKey.GA_DEFENSE_MIDDLE]: "Défense Centrale",
-    [ResourceKey.GA_DEFENSE_OPPOSITE]: "Défense Opposée",
+    [ResourceKey.ATTACK_ACTION]: "Attaque",
+    [ResourceKey.A_ORIGINAL]: "Position",
+    [ResourceKey.A_OUTSIDE]: "Latérale",
+    [ResourceKey.A_MIDDLE]: "Centrale",
+    [ResourceKey.A_OPPOSITE]: "Opposée",
+
+    [ResourceKey.DEFENSE_ACTION]: "Défense",
+    [ResourceKey.D_ORIGINAL]: "Position",
+    [ResourceKey.D_RELANCE]: "Relance",
+    [ResourceKey.D_OUTSIDE]: "Latérale",
+    [ResourceKey.D_MIDDLE]: "Centrale",
+    [ResourceKey.D_OPPOSITE]: "Opposée",
 
     [ResourceKey.GAME_POSITION]: "Passe",
     [ResourceKey.GP_FRONT]: "Avant",
@@ -49,7 +53,6 @@ init({
 
     [ResourceKey.LIBERO_WITH]: "Avec libéro",
     [ResourceKey.LIBERO_WITHOUT]: "Sans libéro",
-
 });
 
 if(window.location.search.includes('?l=geek')) {
@@ -58,17 +61,18 @@ if(window.location.search.includes('?l=geek')) {
 
         [ResourceKey.POSITIONS]: "Posichions",
         [ResourceKey.P_SERVICE]: "Cherviche",
-        [ResourceKey.P_GAME]: "Jeu",
+        [ResourceKey.P_DEFENSE]: "Défenche",
 
-        [ResourceKey.GAME_ACTION]: "Akchion",
-        [ResourceKey.GA_ORIGINAL]: "Posichion",
-        [ResourceKey.GA_RELANCE]: "Relanche",
-        [ResourceKey.GA_ATTACK_OUTSIDE]: "Attaque Latérale",
-        [ResourceKey.GA_ATTACK_MIDDLE]: "Attaque Chentrale",
-        [ResourceKey.GA_ATTACK_OPPOSITE]: "Attaque Oppochée",
-        [ResourceKey.GA_DEFENSE_OUTSIDE]: "Défenche Latérale",
-        [ResourceKey.GA_DEFENSE_MIDDLE]: "Défenche Chentrale",
-        [ResourceKey.GA_DEFENSE_OPPOSITE]: "Défenche Oppochée",
+        [ResourceKey.A_ORIGINAL]: "Posichion",
+        [ResourceKey.A_OUTSIDE]: "Attaque Latérale",
+        [ResourceKey.A_MIDDLE]: "Attaque Chentrale",
+        [ResourceKey.A_OPPOSITE]: "Attaque Oppochée",
+
+        [ResourceKey.DEFENSE_ACTION]: "Défenche",
+        [ResourceKey.D_ORIGINAL]: "Posichion",
+        [ResourceKey.D_RELANCE]: "Relanche",
+        [ResourceKey.D_MIDDLE]: "Chentrale",
+        [ResourceKey.D_OPPOSITE]: "Oppochée",
 
         [ResourceKey.GAME_POSITION]: "Pache",
 

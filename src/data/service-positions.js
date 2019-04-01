@@ -1,22 +1,13 @@
 import {EPlayerRole} from "../model/EPlayerRole";
 import {EServiceAction} from "../model/EServiceAction";
 import {EServicePosition} from "../model/EServicePosition";
-import {replaceLibero} from "../utils/position-utils";
+import {
+    MIDDLE_FRONT,
+    ORIGINAL_P1, ORIGINAL_P2, ORIGINAL_P3, ORIGINAL_P4, ORIGINAL_P5, ORIGINAL_P6,
+    OUSTIDE_BACK_MIDDLE, RECEIVING_LEFT, RECEIVING_RIGHT, SERVICE_PLACE, SETTING_PLACE
+} from "./default-positions"
 
-const ORIGINAL_P1 = {px: 80, py: 70};
-const ORIGINAL_P2 = {px: 80, py: 20};
-const ORIGINAL_P3 = {px: 50, py: 20};
-const ORIGINAL_P4 = {px: 20, py: 20};
-const ORIGINAL_P5 = {px: 20, py: 70};
-const ORIGINAL_P6 = {px: 50, py: 70};
-const OUSTIDE_BACK_MIDDLE = {px: 50, py: 80};
-const MIDDLE_FRONT = {px: 50, py: 5};
-const RECEIVING_LEFT = {px: 20, py: 65};
-const RECEIVING_RIGHT = {px: 80, py: 65};
-const SETTING_PLACE = {px: 65, py: 10};
-const SERVICE_PLACE = {px: 80, py: 110};
-
-export const SERVICE_POSITIONS_DEFAULT = {
+export const SERVICE_POSITIONS = {
     [EServicePosition.P1.id]: {
         [EServiceAction.ORIGINAL.id]: {
             [EPlayerRole.SETTER.id]: ORIGINAL_P1,
@@ -174,5 +165,3 @@ export const SERVICE_POSITIONS_DEFAULT = {
         },
     },
 };
-
-export const SERVICE_POSITIONS_LIBERO = replaceLibero(SERVICE_POSITIONS_DEFAULT);

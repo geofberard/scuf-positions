@@ -1,0 +1,12 @@
+export const ORIGINAL_P1 = {px: 80, py: 70};
+export const ORIGINAL_P2 = {px: 80, py: 20};
+export const ORIGINAL_P3 = {px: 50, py: 20};
+export const ORIGINAL_P4 = {px: 20, py: 20};
+export const ORIGINAL_P5 = {px: 20, py: 70};
+export const ORIGINAL_P6 = {px: 50, py: 70};
+export const OUSTIDE_BACK_MIDDLE = {px: 50, py: 80};
+export const MIDDLE_FRONT = {px: 50, py: 5};
+export const RECEIVING_LEFT = {px: 20, py: 65};
+export const RECEIVING_RIGHT = {px: 80, py: 65};
+export const SETTING_PLACE = {px: 65, py: 10};
+export const SERVICE_PLACE = {px: 80, py: 110};
