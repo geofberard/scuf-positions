@@ -137,7 +137,7 @@ class PositionsApp extends React.Component {
         this.state = {
             position: POSITIONS[0],
             focus: ALL_PLAYERS,
-            libero: false,
+            libero: true,
             mobileOpen: false,
         };
         this.onPlayerChange = this.onPlayerChange.bind(this);
