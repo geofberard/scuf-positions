@@ -61,12 +61,14 @@ if(window.location.search.includes('?l=geek')) {
 
         [ResourceKey.POSITIONS]: "Posichions",
         [ResourceKey.P_SERVICE]: "Cherviche",
+        [ResourceKey.P_ATTACK]: "Smash",
         [ResourceKey.P_DEFENSE]: "Défenche",
 
+        [ResourceKey.ATTACK_ACTION]: "Smash",
         [ResourceKey.A_ORIGINAL]: "Posichion",
-        [ResourceKey.A_OUTSIDE]: "Attaque Latérale",
-        [ResourceKey.A_MIDDLE]: "Attaque Chentrale",
-        [ResourceKey.A_OPPOSITE]: "Attaque Oppochée",
+        [ResourceKey.A_OUTSIDE]: "Smach Latérale",
+        [ResourceKey.A_MIDDLE]: "Smach Chentrale",
+        [ResourceKey.A_OPPOSITE]: "Smach Oppochée",
 
         [ResourceKey.DEFENSE_ACTION]: "Défenche",
         [ResourceKey.D_ORIGINAL]: "Posichion",
